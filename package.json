@@ -1,0 +1,31 @@
+{
+	"name": "pi-surplus",
+	"version": "1.0.0",
+	"description": "Surplus Intelligence gateway provider for Pi and Oh My Pi: live model catalog with live marketplace pricing",
+	"license": "MIT",
+	"author": "Noor Latif <noor@latif.se>",
+	"homepage": "https://github.com/noor-latif/pi-surplus#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/noor-latif/pi-surplus.git"
+	},
+	"keywords": [
+		"pi",
+		"pi-extension",
+		"oh-my-pi",
+		"omp",
+		"provider",
+		"surplus",
+		"surplus-intelligence"
+	],
+	"type": "module",
+	"omp": {
+		"extensions": ["./index.ts"]
+	},
+	"pi": {
+		"extensions": ["./index.ts"]
+	},
+	"peerDependencies": {
+		"@oh-my-pi/pi-coding-agent": "*"
+	}
+}
