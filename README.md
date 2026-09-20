@@ -2,7 +2,7 @@
 
 Surplus Intelligence gateway provider for [Pi](https://pi.dev) and [Oh My Pi (OMP)](https://github.com/can1357/oh-my-pi).
 
-Registers a `surplus` provider backed by the live Surplus Intelligence catalog and marketplace:
+Surplus Intelligence is an open market for AI inference — [surplusintelligence.ai](https://www.surplusintelligence.ai/). This extension registers a `surplus` provider backed by its live catalog and marketplace:
 
 - **Live catalog** — `GET /v1/models` (OpenRouter-compatible): context length, input modalities, supported parameters.
 - **Live marketplace pricing** — `GET /api/markets`: the cheapest currently-available seller offer per model (`best_*_per_1m`, microdollars), falling back to the catalog reference price. What the router actually picks.

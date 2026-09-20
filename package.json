@@ -8,6 +8,9 @@
 	"bugs": {
 		"url": "https://github.com/noor-latif/pi-surplus/issues"
 	},
+	"surplus": {
+		"website": "https://www.surplusintelligence.ai/"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/noor-latif/pi-surplus.git"
