@@ -8,7 +8,7 @@
  * - Prices are USD. OMP/Pi render the cost column with a `$` sign.
  *
  * Host support:
- * - OMP: `fetchDynamicModels` fetches the live list on demand (cached 24 h).
+ * - OMP: `fetchDynamicModels` fetches a fresh live quote on every call.
  * - Upstream Pi: `registerProvider` only accepts a static `models` array plus
  *   an optional `refreshModels(context)` hook, so the catalog is fetched once
  *   at load and re-fetched via the host's model-refresh flow.
@@ -123,7 +123,7 @@ export default async function surplus(pi: ExtensionAPI) {
 	let cached = await fetchModels(process.env[KEY_ENV]);
 
 	// Upstream Pi path: refreshModels re-fetches through the host's model-refresh flow.
-	// OMP path: fetchDynamicModels fetches on demand (host caches with 24 h TTL).
+	// OMP path: fetchDynamicModels fetches a fresh live quote on every call.
 	pi.registerProvider("surplus", {
 		baseUrl: `${BASE}/v1`,
 		api: CHAT_API,
