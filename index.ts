@@ -19,6 +19,9 @@ import type { ExtensionAPI } from "@oh-my-pi/pi-coding-agent";
 const BASE = "https://api.surplusintelligence.ai";
 const KEY_ENV = "SURPLUS_INTELLIGENCE_API_KEY";
 const CHAT_API = "openai-completions";
+// /v1/responses for ids whose chat/completions surface rejects tools+effort
+// (gpt-6.1-sol: 400, request id 01M3Y13BNPRMR45HHC4RS6E51P, 2026-10-02).
+const RESPONSES_API = "openai-responses";
 
 /** Consumed subset of a Surplus `/v1/models` row (OpenRouter-compatible). */
 type CatalogRow = {
@@ -44,7 +47,7 @@ type MarketRow = {
 type SurplusModel = {
 	id: string;
 	name: string;
-	api: typeof CHAT_API;
+	api: typeof CHAT_API | typeof RESPONSES_API;
 	baseUrl: string;
 	reasoning: boolean;
 	input: ("text" | "image")[];
@@ -74,7 +77,7 @@ function toModel(row: CatalogRow, market: MarketRow | undefined): SurplusModel |
 	return {
 		id,
 		name: typeof row.name === "string" && row.name.length > 0 ? row.name : id,
-		api: CHAT_API,
+		api: id === "gpt-6.1-sol" ? RESPONSES_API : CHAT_API,
 		baseUrl: `${BASE}/v1`,
 		reasoning: params.includes("reasoning") || params.includes("include_reasoning"),
 		input: input.length > 0 ? input : ["text"],
